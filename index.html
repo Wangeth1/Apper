@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Trading Analyzer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+</head>
+<body>
+
+<!-- Sidebar -->
+<aside class="sidebar">
+    <h2>Settings</h2>
+
+    <div class="engine-status">
+        Local NLP Engine (no API needed)
+    </div>
+    <div class="engine-caption">
+        Sentiment: Financial lexicon | Technical: RSI, MACD, SMA/EMA, Volume | Companies: Entity detection
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <h2>Portfolio Summary</h2>
+
+    <div class="sidebar-metric">
+        <div class="label">Portfolio Value</div>
+        <div class="value" id="sidebar-value">$100,000.00</div>
+        <div class="delta" id="sidebar-return">+0.00%</div>
+    </div>
+    <div class="sidebar-metric">
+        <div class="label">Cash Available</div>
+        <div class="value" id="sidebar-cash">$100,000.00</div>
+    </div>
+    <div class="sidebar-metric">
+        <div class="label">Total Trades</div>
+        <div class="value" id="sidebar-trades">0</div>
+    </div>
+    <div class="sidebar-metric" id="sidebar-accuracy-section" style="display:none;">
+        <div class="label">Accuracy</div>
+        <div class="value" id="sidebar-accuracy">--</div>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <button class="sidebar-btn primary" id="btn-refresh" onclick="App.refresh()">Refresh Data</button>
+    <button class="sidebar-btn danger" id="btn-reset" onclick="App.resetPortfolio()">Reset Portfolio</button>
+</aside>
+
+<!-- Loading indicator -->
+<div class="loading-indicator" id="loading">
+    <div class="spinner-icon"></div>
+    Updating...
+</div>
+
+<!-- Main content -->
+<div class="main">
+    <h1 class="main-header">Auto Trading Analyzer</h1>
+    <p class="main-subtitle">News-Based Automated Paper Trading</p>
+
+    <!-- Market Status Banner -->
+    <div class="market-banner" id="market-banner"></div>
+
+    <!-- Tab bar -->
+    <div class="tab-bar">
+        <button class="tab-btn active" data-tab="news" onclick="App.switchTab('news')">News & Analysis</button>
+        <button class="tab-btn" data-tab="trading" onclick="App.switchTab('trading')">Paper Trading</button>
+        <button class="tab-btn" data-tab="portfolio" onclick="App.switchTab('portfolio')">Portfolio</button>
+        <button class="tab-btn" data-tab="history" onclick="App.switchTab('history')">Trade History</button>
+        <button class="tab-btn" data-tab="thinking" onclick="App.switchTab('thinking')">Engine Thinking</button>
+    </div>
+
+    <!-- Tab: News & Analysis -->
+    <div class="tab-panel active" id="tab-news">
+        <h2 class="section-header">Latest Market News</h2>
+        <p class="caption" id="news-timestamp"></p>
+        <div id="news-list"></div>
+
+        <hr class="divider">
+        <h2 class="section-header">Live Analysis</h2>
+        <div id="analysis-summary"></div>
+        <div id="analysis-market-warning"></div>
+        <h3 class="section-subheader">Stock Ratings</h3>
+        <div id="recommendations-list"></div>
+    </div>
+
+    <!-- Tab: Paper Trading -->
+    <div class="tab-panel" id="tab-trading">
+        <h2 class="section-header">Execute Paper Trades</h2>
+        <div id="trading-market-warning"></div>
+        <p class="caption">Trades are executed automatically when news updates during market hours.</p>
+
+        <h3 class="section-subheader">Manual Trade</h3>
+        <div class="trade-form">
+            <div class="form-group">
+                <label>Symbol</label>
+                <select id="trade-symbol"></select>
+            </div>
+            <div class="form-group">
+                <label>Action</label>
+                <select id="trade-action">
+                    <option value="BUY">BUY</option>
+                    <option value="SELL">SELL</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Amount ($)</label>
+                <input type="number" id="trade-amount" value="1000" min="0" step="100">
+            </div>
+            <button class="trade-btn" id="trade-execute" onclick="App.executeManualTrade()">Execute Trade</button>
+        </div>
+        <div id="trade-result"></div>
+    </div>
+
+    <!-- Tab: Portfolio -->
+    <div class="tab-panel" id="tab-portfolio">
+        <h2 class="section-header">Portfolio Positions</h2>
+        <div class="metrics-row" id="portfolio-metrics"></div>
+        <hr class="divider">
+        <div id="portfolio-positions"></div>
+        <hr class="divider">
+        <h3 class="section-subheader">Recommendation Accuracy</h3>
+        <div id="portfolio-accuracy"></div>
+    </div>
+
+    <!-- Tab: Trade History -->
+    <div class="tab-panel" id="tab-history">
+        <h2 class="section-header">Trade History</h2>
+        <div id="history-content"></div>
+    </div>
+
+    <!-- Tab: Engine Thinking -->
+    <div class="tab-panel" id="tab-thinking">
+        <h2 class="section-header">Engine Thinking — Per-Story Breakdown</h2>
+        <p class="caption" id="thinking-summary"></p>
+        <div id="thinking-list"></div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Scripts (in dependency order) -->
+<script src="js/config.js"></script>
+<script src="js/sentiment.js"></script>
+<script src="js/companies.js"></script>
+<script src="js/themes.js"></script>
+<script src="js/technicals.js"></script>
+<script src="js/signals.js"></script>
+<script src="js/analyzer.js"></script>
+<script src="js/news.js"></script>
+<script src="js/portfolio.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

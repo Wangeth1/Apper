@@ -1,0 +1,81 @@
+{
+  "tickers": [
+    "AAPL",
+    "NVDA",
+    "TSLA",
+    "GOOGL",
+    "META"
+  ],
+  "news_count": 45,
+  "stock_data": [
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "current_price": 254.94,
+      "previous_close": 258.27,
+      "change_percent": -1.29,
+      "market_cap": 3767083466752,
+      "volume": 13153426,
+      "52_week_high": 288.62,
+      "52_week_low": 169.21,
+      "pe_ratio": 34.174263,
+      "sector": "Technology"
+    },
+    {
+      "symbol": "NVDA",
+      "name": "NVIDIA Corporation",
+      "current_price": 190.84,
+      "previous_close": 188.52,
+      "change_percent": 1.23,
+      "market_cap": 4646381289472,
+      "volume": 66638701,
+      "52_week_high": 212.19,
+      "52_week_low": 86.62,
+      "pe_ratio": 47.354836,
+      "sector": "Technology"
+    },
+    {
+      "symbol": "TSLA",
+      "name": "Tesla, Inc.",
+      "current_price": 432.58,
+      "previous_close": 430.91,
+      "change_percent": 0.39,
+      "market_cap": 1438699487232,
+      "volume": 19699993,
+      "52_week_high": 498.83,
+      "52_week_low": 214.25,
+      "pe_ratio": 294.2755,
+      "sector": "Consumer Cyclical"
+    },
+    {
+      "symbol": "GOOGL",
+      "name": "Alphabet Inc.",
+      "current_price": 333.85,
+      "previous_close": 334.55,
+      "change_percent": -0.21,
+      "market_cap": 4043632017408,
+      "volume": 10295248,
+      "52_week_high": 340.49,
+      "52_week_low": 140.53,
+      "pe_ratio": 32.92406,
+      "sector": "Communication Services"
+    },
+    {
+      "symbol": "META",
+      "name": "Meta Platforms, Inc.",
+      "current_price": 668.03,
+      "previous_close": 672.97,
+      "change_percent": -0.73,
+      "market_cap": 1683788136448,
+      "volume": 5421718,
+      "52_week_high": 796.25,
+      "52_week_low": 479.8,
+      "pe_ratio": 29.545776,
+      "sector": "Communication Services"
+    }
+  ],
+  "analysis": {
+    "success": false,
+    "error": "ANTHROPIC_API_KEY not found. Set it in .env file or pass it directly."
+  }
+}

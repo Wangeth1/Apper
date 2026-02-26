@@ -1,0 +1,30 @@
+{
+  "portfolio": {
+    "cash": 100000.0,
+    "positions": {},
+    "trade_history": [],
+    "initial_capital": 100000.0,
+    "created_at": "2026-02-25T19:23:29.375595"
+  },
+  "recommendation_history": [],
+  "current_recommendations": {
+    "success": true,
+    "analysis_summary": "Analyzed 15 stories, detected 42 tradeable tickers. Technical analysis applied to 38 tickers. Overall bias is bullish with 6 BUY and 1 SELL signals.",
+    "recommendations": [
+      {
+        "symbol": "BE",
+        "action": "BUY",
+        "confidence": 0.539,
+        "reason": "Bloom Energy Corporation (BE) Gained From a $5B Partnership with Brookfield and ",
+        "target_allocation_percent": 9,
+        "aggregated_score": 0.5467,
+        "story_count": 1,
+        "sentiment_score": 0.475,
+        "technical_score": 0.6344,
+        "technical_indicators": {
+          "rsi": 61.64,
+          "sma_20": 153.69,
+          "sma_50": 129.47,
+          "ema_12": 156.76,
+          "price": 174.77,
+          "price_above_sma20": 
