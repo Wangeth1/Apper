@@ -11,47 +11,53 @@
 
 <!-- Sidebar -->
 <aside class="sidebar">
-    <h2>Settings</h2>
-
-    <div class="engine-status">
-        Local NLP Engine (no API needed)
-    </div>
-    <div class="engine-caption">
-        Sentiment: Financial lexicon | Technical: RSI, MACD, SMA/EMA, Volume | Companies: Entity detection
+    <div class="sidebar-logo">
+        <h1>Auto Trading Analyzer</h1>
+        <div class="subtitle">Paper Trading Engine</div>
     </div>
 
-    <hr class="sidebar-divider">
-
-    <h2>Portfolio Summary</h2>
-
-    <div class="sidebar-metric">
-        <div class="label">Portfolio Value</div>
-        <div class="value" id="sidebar-value">$100,000.00</div>
-        <div class="delta" id="sidebar-return">+0.00%</div>
-    </div>
-    <div class="sidebar-metric">
-        <div class="label">Cash Available</div>
-        <div class="value" id="sidebar-cash">$100,000.00</div>
-    </div>
-    <div class="sidebar-metric">
-        <div class="label">Total Trades</div>
-        <div class="value" id="sidebar-trades">0</div>
-    </div>
-    <div class="sidebar-metric" id="sidebar-accuracy-section" style="display:none;">
-        <div class="label">Accuracy</div>
-        <div class="value" id="sidebar-accuracy">--</div>
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Analysis Engine</div>
+        <div class="engine-badge">
+            <div class="dot"></div>
+            <div class="text">Local NLP Engine Active</div>
+        </div>
+        <div class="engine-caption">
+            Sentiment: Financial lexicon &middot; Technical: RSI, MACD, SMA/EMA &middot; Companies: Entity detection
+        </div>
     </div>
 
-    <hr class="sidebar-divider">
+    <div class="sidebar-section">
+        <div class="sidebar-section-title">Portfolio</div>
+        <div class="sidebar-metric">
+            <div class="label">Portfolio Value</div>
+            <div class="value" id="sidebar-value">$100,000.00</div>
+            <div class="delta" id="sidebar-return">+0.00%</div>
+        </div>
+        <div class="sidebar-metric">
+            <div class="label">Cash Available</div>
+            <div class="value" id="sidebar-cash">$100,000.00</div>
+        </div>
+        <div class="sidebar-metric">
+            <div class="label">Total Trades</div>
+            <div class="value" id="sidebar-trades">0</div>
+        </div>
+        <div class="sidebar-metric" id="sidebar-accuracy-section" style="display:none;">
+            <div class="label">Accuracy</div>
+            <div class="value" id="sidebar-accuracy">--</div>
+        </div>
+    </div>
 
-    <button class="sidebar-btn primary" id="btn-refresh" onclick="App.refresh()">Refresh Data</button>
-    <button class="sidebar-btn danger" id="btn-reset" onclick="App.resetPortfolio()">Reset Portfolio</button>
+    <div class="sidebar-actions">
+        <button class="sidebar-btn primary" onclick="App.refresh()">Refresh Data</button>
+        <button class="sidebar-btn danger" onclick="App.resetPortfolio()">Reset Portfolio</button>
+    </div>
 </aside>
 
 <!-- Loading indicator -->
 <div class="loading-indicator" id="loading">
     <div class="spinner-icon"></div>
-    Updating...
+    Analyzing...
 </div>
 
 <!-- Main content -->
@@ -92,23 +98,25 @@
         <p class="caption">Trades are executed automatically when news updates during market hours.</p>
 
         <h3 class="section-subheader">Manual Trade</h3>
-        <div class="trade-form">
-            <div class="form-group">
-                <label>Symbol</label>
-                <select id="trade-symbol"></select>
+        <div class="trade-form-card">
+            <div class="trade-form">
+                <div class="form-group">
+                    <label>Symbol</label>
+                    <select id="trade-symbol"></select>
+                </div>
+                <div class="form-group">
+                    <label>Action</label>
+                    <select id="trade-action">
+                        <option value="BUY">BUY</option>
+                        <option value="SELL">SELL</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Amount ($)</label>
+                    <input type="number" id="trade-amount" value="1000" min="0" step="100">
+                </div>
+                <button class="trade-btn" id="trade-execute" onclick="App.executeManualTrade()">Execute Trade</button>
             </div>
-            <div class="form-group">
-                <label>Action</label>
-                <select id="trade-action">
-                    <option value="BUY">BUY</option>
-                    <option value="SELL">SELL</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Amount ($)</label>
-                <input type="number" id="trade-amount" value="1000" min="0" step="100">
-            </div>
-            <button class="trade-btn" id="trade-execute" onclick="App.executeManualTrade()">Execute Trade</button>
         </div>
         <div id="trade-result"></div>
     </div>
@@ -132,7 +140,7 @@
 
     <!-- Tab: Engine Thinking -->
     <div class="tab-panel" id="tab-thinking">
-        <h2 class="section-header">Engine Thinking — Per-Story Breakdown</h2>
+        <h2 class="section-header">Engine Thinking</h2>
         <p class="caption" id="thinking-summary"></p>
         <div id="thinking-list"></div>
     </div>
